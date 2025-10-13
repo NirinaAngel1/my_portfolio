@@ -1,220 +1,336 @@
-// app/contact/page.tsx
 "use client";
 
-import React, { useState } from "react";
-import Link from "next/link";
-import { Phone, Mail, Linkedin, Github, Gitlab, Send } from "lucide-react"; // Ajout de l'icône Send
+import React, { ChangeEvent, useState } from "react";
+import {
+  Phone,
+  Mail,
+  Linkedin,
+  MapPin,
+  Github,
+  Gitlab,
+  Send,
+  CheckCircle,
+  XCircle
+} from "lucide-react";
 import { motion, Variants } from "framer-motion";
 
-export default function ContactPage() {
-  // État pour gérer les valeurs du formulaire
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
+const CONTACT_INFO = {
+  location : "Antananarivo, Madagascar",
+  emails : ["angen3r@gmail.com", "angen1r@yahoo.fr"],
+  phones : ["+261 34 12 273 14", "+261 33 94 557 10"],
+  linkedin : "https://www.linkedin.com/in/nirina-angelin-razafimandimby/",
+  github:"https://github.com/NirinaAngel1",
+  gitlab :"https://gitlab.com/Nirina_Angel1",
+}
+
+const ContactItem = ({Icon, title, link, content, colorClass = "text-amber-400"}:{Icon : React.ElementType, title: string, link?: string, content: React.ReactNode, colorClass?: string}) => (
+  <div className="flex items-start p-4 bg-gray-700/50 rounded-xl transition-all hover:bg-gray-700 border border-gray-700 hover:shadow-lg hover:border-amber-500/50 ">
+    <Icon size={24} className={`${colorClass} mt-1 flex-shrink-0`}/>
+      <div className="ml-4">
+        <h3 className="text-lg font-semibold text-white mb-1">{title}</h3>
+        {link ? (
+          <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-gray-300 hover:text-amber-400 transition-colors text-sm sm:text-base block underline-offset-4"
+          >
+            {content}
+          </a>
+        ):(
+          <div className="text-gray-300 hover:text-amber-400 transition-colors text-sm sm:text-base">{content}</div>
+        )}
+      </div>
+  </div>
+);
+
+export default function ContactPage(){
+  const [formData, setFormData]= useState({
+    name:"",
+    email:"",
+    subject:"",
+    message:"",
   });
 
-  // Gère les changements dans les champs du formulaire
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [statusMessage, setStatusMessage] = useState<string>("");
+
+
+  // Changement dans les champs du formulaire
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>)=>{
+    const {name, value} = e.target;
+    setFormData((prevData) => ({
+      ...prevData, [name]:value
+    }));
+    setSubmissionStatus('idle');
+    setStatusMessage("");
   };
 
-  // Gère la soumission du formulaire (pour l'instant, juste un log)
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Ici, vous intégreriez la logique d'envoi à une API ou un service tiers
-    console.log("Formulaire soumis:", formData);
-    alert("Formulaire soumis ! (La logique d'envoi n'est pas encore implémentée)");
-    // Optionnel: Réinitialiser le formulaire après soumission
-    setFormData({ name: "", email: "", subject: "", message: "" });
+// Soumission du formulaire
+
+const handleSubmit = (e:React.FormEvent<HTMLFormElement>)=>{
+  e.preventDefault();
+  setIsSubmitting(true);
+  setSubmissionStatus('idle');
+  setStatusMessage("");
+
+  // Simuler une soumission de formulaire
+  setTimeout(()=>{
+    console.log('Formulaire soumis : ', formData);
+    setIsSubmitting(false);
+    setSubmissionStatus('success');
+    setStatusMessage("Votre message a été envoyé avec succès !");
+    setFormData({name:"", email:"", subject:"", message:""});
+  },1500)
+};
+
+  const containerVariants : Variants = {
+    hidden:{opacity:0, y:30},
+    visible:{
+      opacity:1, 
+      y:0, 
+      transition:{staggerChildren:0.1, duration:0.5, ease:"easeOut"}},
   };
 
-  const containerVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut", staggerChildren: 0.1 },
-    },
-  };
-
-  const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  const itemsVariants : Variants = {
+    hidden:{opacity:0, y:30},
+    visible:{opacity:1, y:0, transition:{duration:0.6, ease:"easeOut"}},
   };
 
   return (
     <motion.main
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
-      className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white p-4 sm:p-8"
+    variants={containerVariants}
+    initial="hidden"
+    animate="visible"
+    className="flex flex-col items-center min-h-screen bg-gray-900 text-white p-4 sm:p-8"
     >
-      <motion.h1
-        variants={itemVariants}
-        className="text-4xl sm:text-5xl font-extrabold text-amber-400 mb-8 text-center"
-      >
-        Contactez-moi
-      </motion.h1>
-
-      {/* SECTION : Autres moyens de contact (vos informations initiales) */}
+      {/* titre et introduction */}
       <motion.div
-        variants={itemVariants}
-        className="bg-gray-800 p-6 sm:p-10 rounded-lg shadow-2xl max-w-lg w-full text-center border border-gray-700 mb-12" // Ajout de mb-12 pour espacer le formulaire
+      variants={itemsVariants}
+      className="max-w-4xl w-full mb-12 text-center"
       >
-        <h2 className="text-3xl font-bold text-white mb-6 text-center">Autres Contacts</h2>
-        <p className="text-lg sm:text-xl mb-6 text-gray-300">
-          Vous pouvez me contacter via les moyens suivants :
+        <h1 className="text-4xl sm:text-5xl font-extrabold text-amber-400 mb-4 tracking-tight">Entrons en Contact</h1>
+        <p className="text-lg text-gray-400 max-w-3xl mx-auto">
+          Je suis disponible pour de nouvelles collaborations et opportunités passionnantes. Laissez-moi un message, et je vous répondrai dans les plus brefs délais.
         </p>
-
-        <ul className="space-y-4 text-left mx-auto max-w-sm">
-          <motion.li variants={itemVariants} className="flex items-center justify-center sm:justify-start gap-3 text-lg text-gray-200">
-            <Mail size={24} className="text-blue-400 flex-shrink-0" />
-            <span className="flex-grow">Email :</span>
-            <div className="flex flex-col sm:items-center sm:space-x-2 text-right">
-              <Link href="mailto:angen3r@gmail.com" className="hover:text-amber-400 transition-colors text-sm sm:text-base">
-                angen3r@gmail.com
-              </Link>
-              <Link href="mailto:angen1r@yahoo.fr" className="hover:text-amber-400 transition-colors text-sm sm:text-base">
-                angen1r@yahoo.fr
-              </Link>
-            </div>
-          </motion.li>
-
-          <motion.li variants={itemVariants} className="flex items-center justify-center sm:justify-start gap-3 text-lg text-gray-200">
-            <Phone size={24} className="text-green-400 flex-shrink-0" />
-            <span className="flex-grow">Téléphone :</span>
-            <div className="flex flex-col sm:items-center sm:space-x-2 text-right">
-              <Link href="tel:+261339455710" className="hover:text-amber-400 transition-colors text-sm sm:text-base">
-                +261 33 94 557 10
-              </Link>
-              <Link href="tel:+261341227314" className="hover:text-amber-400 transition-colors text-sm sm:text-base">
-                +261 34 12 273 14
-              </Link>
-            </div>
-          </motion.li>
-
-          <motion.li variants={itemVariants} className="flex items-center justify-center sm:justify-start gap-3 text-lg text-gray-200">
-            <Linkedin size={24} className="text-blue-600 flex-shrink-0" />
-            <span className="flex-grow">LinkedIn :</span>
-            <Link
-              href="https://www.linkedin.com/in/nirina-angelin-razafimandimb/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-amber-400 transition-colors text-sm sm:text-base underline"
-            >
-              Mon profil LinkedIn
-            </Link>
-          </motion.li>
-
-          <motion.li variants={itemVariants} className="flex items-center justify-center sm:justify-start gap-3 text-lg text-gray-200">
-            <Github size={24} className="text-purple-400 flex-shrink-0" />
-            <span className="flex-grow">GitHub :</span>
-            <Link
-              href="https://github.com/NirinaAngel1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-amber-400 transition-colors text-sm sm:text-base underline"
-            >
-              Lien GitHub
-            </Link>
-          </motion.li>
-
-          <motion.li variants={itemVariants} className="flex items-center justify-center sm:justify-start gap-3 text-lg text-gray-200">
-            <Gitlab size={24} className="text-orange-500 flex-shrink-0" />
-            <span className="flex-grow">GitLab :</span>
-            <Link
-              href="https://gitlab.com/Nirina_Angel1"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-amber-400 transition-colors text-sm sm:text-base underline"
-            >
-              Lien GitLab
-            </Link>
-          </motion.li>
-        </ul>
       </motion.div>
 
-      {/* NOUVELLE SECTION : Formulaire de Contact (maintenant en dessous) */}
-      <motion.div
-        variants={itemVariants}
-        className="bg-gray-800 p-6 sm:p-10 rounded-lg shadow-2xl max-w-lg w-full border border-gray-700 mt-12" // Ajout de mt-12 pour l'espacement
-      >
-        <h2 className="text-3xl font-bold text-white mb-6 text-center">Envoyer un Message</h2>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label htmlFor="name" className="block text-gray-300 text-sm font-bold mb-2">
-              Nom complet
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-amber-500 bg-gray-700 border-gray-600 focus:border-transparent"
-              placeholder="Votre nom"
-            />
-          </div>
-          <div>
-            <label htmlFor="email" className="block text-gray-300 text-sm font-bold mb-2">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-amber-500 bg-gray-700 border-gray-600 focus:border-transparent"
-              placeholder="Votre email"
-            />
-          </div>
-          <div>
-            <label htmlFor="subject" className="block text-gray-300 text-sm font-bold mb-2">
-              Sujet
-            </label>
-            <input
-              type="text"
-              id="subject"
-              name="subject"
-              value={formData.subject}
-              onChange={handleChange}
-              required
-              className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-amber-500 bg-gray-700 border-gray-600 focus:border-transparent"
-              placeholder="Sujet du message"
-            />
-          </div>
-          <div>
-            <label htmlFor="message" className="block text-gray-300 text-sm font-bold mb-2">
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              rows={5}
-              className="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-amber-500 bg-gray-700 border-gray-600 focus:border-transparent resize-y"
-              placeholder="Votre message"
-            ></textarea>
-          </div>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            type="submit"
-            className="w-full bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-2 focus:ring-offset-gray-800 flex items-center justify-center gap-2"
+
+    {/* contenu principal de la page  */}
+
+    <div className="max-w-6xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+
+    {/* colonne 1 = formulaire */}
+    <motion.div
+    variants={itemsVariants}
+    className="bg-gray-800 p-6 sm:p-10 rounded-2xl shadow-2xl border border-gray-700 h-fit"
+    >
+      <h2 className="text-2xl font-bold text-white mb-8 border-b border-amber-400/50 pb-3">
+        Envoyez-moi un message
+      </h2>
+      <form onSubmit={handleSubmit} className="space-y-6">
+
+        {/* nom */}
+        <div>
+          <label htmlFor="name" className="block text-gray-300 text-sm font-semibold mb-2">Nom complet</label>
+          <input
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+          placeholder="Votre nom"
+          className="w-full px-4 py-3 rounded-xl bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-amber-500 focus:border-transparent transition-all"
+          />
+        </div>
+
+        {/* mail */}
+        
+        <div>
+          <label htmlFor="email" className="block text-gray-300 text-sm font-semibold mb-2">Email</label>
+          <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          placeholder="Votre adresse mail"
+          className="w-full px-4 py-3 rounded-xl bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-amber-500 focus:border-transparent transition-all"
+          />
+        </div>
+
+        {/* sujet ou  objet */}
+        
+        <div>
+          <label htmlFor="subject" className="block text-gray-300 text-sm font-semibold mb-2">Sujet</label>
+          <input
+          type="text"
+          id="namesubject"
+          name="subject"
+          value={formData.subject}
+          onChange={handleChange}
+          required
+          placeholder="Sujet du message (ex: Proposition de projet)"
+          className="w-full px-4 py-3 rounded-xl bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-amber-500 focus:border-transparent transition-all"
+          />
+        </div>
+
+        {/* message */}
+        <div>
+          <label htmlFor="message" className="block text-gray-300 text-sm font-semibold mb-2">Message</label>
+          <textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          required
+          rows={5}
+          placeholder="Décrivez votre message ici..."
+          className="w-full py-3 px-4 rounded-xl bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all resize-y"
+          ></textarea>
+        </div>
+
+        {/* statut de la soumission */}
+        {submissionStatus!=='idle' && statusMessage && (
+          <motion.div
+          initial = {{opacity:0, height:0}}
+          animate = {{opacity:1, height:"auto"}}
+          className={`p-4 rounded-lg flex items-center gap-3 font-medium text-sm ${
+            submissionStatus === 'success' ? 'bg-green-500/10 text-green-400 border border-green-700':
+            'bg-red-500/10 text-red-400 border border-red-700'
+          }`}
           >
-            Envoyer
-            <Send size={20} />
-          </motion.button>
-        </form>
-      </motion.div>
+            {submissionStatus === 'success' ? <CheckCircle size={20} /> : <XCircle size={20} />}
+            {statusMessage}
+          </motion.div>
+        )}
+
+        {/* Le bouton */}
+        <motion.button
+        whileHover={{scale:1.01}}
+        whileTap={{scale:0.99}}
+        type="submit"
+        disabled={isSubmitting || submissionStatus === 'success'}
+        className="w-full bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold py-3 px-4 rounded-xl focus:outline-none focus:ring-4 focus:ring-amber-500/50 transition-all flex items-center justify-center gap-2 disabled:bg-gray-500 disabled:cursor-not-allowed disabled:text-gray-200 cursor-pointer"
+        >
+          {/* animation lors de la soumission */}
+          {isSubmitting ? (
+            <>
+              <svg className="animate-spin h-5 w-5 text-gray-900 " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Envoi en cours...
+            </>
+          ):(
+            <>
+              Envoyer le message
+              <Send size={20} />
+            </>
+          )}
+        </motion.button>
+      </form>
+    </motion.div>
+
+    {/* colonne 2 = infos de contact */}
+          <motion.div 
+          variants={itemsVariants} 
+          className="space-y-8 h-fit lg:pt-10" // Petit padding pour alignement visuel
+        >
+          
+          {/* Section Informations Générales */}
+          <div>
+            <h2 className="text-2xl font-bold text-white mb-4 border-b border-gray-700 pb-3">
+              Coordonnées Directes
+            </h2>
+            <div className="space-y-4">
+              
+              <ContactItem
+                Icon={MapPin}
+                title="Localisation"
+                content={CONTACT_INFO.location}
+                colorClass="text-red-400"
+              />
+              
+              <ContactItem
+                Icon={Mail}
+                title="Emails Personnels"
+                content={
+                  <div className="flex flex-col">
+                    {CONTACT_INFO.emails.map((email) => (
+                        <a key={email} href={`mailto:${email}`} className="hover:text-amber-400 transition-colors">
+                          {email}
+                        </a>
+                    ))}
+                  </div>
+                }
+                colorClass="text-blue-400"
+              />
+
+              <ContactItem
+                Icon={Phone}
+                title="Téléphones"
+                content={
+                  <div className="flex flex-col">
+                    {CONTACT_INFO.phones.map((phone) => (
+                      <a key={phone} href={`tel:${phone.replace(/\s/g, "")}`} className="hover:text-amber-400 transition-colors">
+                        {phone}
+                      </a>
+                    ))}
+                  </div>
+                }
+                colorClass="text-green-400"
+              />
+            </div>
+          </div>
+          
+          {/* Section Réseaux Sociaux */}
+          <div>
+            <h2 className="text-2xl font-bold text-white mb-4 border-b border-gray-700 pb-3">
+              Réseaux Professionnels
+            </h2>
+            <div className="space-y-4">
+              
+              <ContactItem
+                Icon={Linkedin}
+                title="LinkedIn"
+                link={CONTACT_INFO.linkedin}
+                content="Profil LinkedIn"
+                colorClass="text-blue-600"
+              />
+
+              <ContactItem
+                Icon={Github}
+                title="GitHub"
+                link={CONTACT_INFO.github}
+                content="Lien GitHub"
+                colorClass="text-purple-400"
+              />
+
+              <ContactItem
+                Icon={Gitlab}
+                title="GitLab"
+                link={CONTACT_INFO.gitlab}
+                content="Lien GitLab"
+                colorClass="text-orange-500"
+              />
+            </div>
+          </div>
+          
+          {/* Bloc d'encouragement */}
+          <div className="p-6 bg-amber-500/10 rounded-2xl border-l-4 border-amber-500 text-gray-300 shadow-md">
+            <p className="font-semibold text-white mb-2 text-lg">Votre projet m'intéresse !</p>
+            <p className="text-sm">N'hésitez pas à être aussi détaillé que possible dans votre message pour que je puisse vous faire une proposition pertinente.</p>
+          </div>
+        </motion.div>
+    </div>
+
+
     </motion.main>
-  );
+  )
+
+
 }
