@@ -1,22 +1,21 @@
+// app/projet/page.tsx
 import React from "react";
-import prisma from "../../../lib/prisma.mjs";
-import { motion, Variants } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
-import { Github, Briefcase,  } from "lucide-react";
+import prisma from "@/lib/prisma"; 
+import ProjectList from "@/components/ProjectList"; 
+export default async function ProjectPage() {
+  const projects = await prisma.project.findMany({
+    orderBy: {
+      created_at:"desc",
+    }
+  });
 
-
-export default async function ProjectPage(){
-    const projects = await prisma.project.findMany({
-    });
-
-    return (
-        <div>
-            <>{
-            console.log(projects)
-            }</>
-            <p></p>
-        </div>
-    )
+ 
+  return (
+    <div>
+      <>
+      {console.log("Les projets : ",projects)}
+      </>
+      <ProjectList projects={projects} />
+    </div>
+  );
 }
-
