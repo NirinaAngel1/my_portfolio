@@ -61,7 +61,7 @@ export default function ProjectList ({projects} : Props){
                 description={proj.description}
                 githubLink={proj.github_url}
                 image={proj.image_url}
-                slug={proj.slug ?? proj.id}
+                slug={proj.slug}
               />
           ))}
         </div>
