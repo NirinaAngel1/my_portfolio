@@ -71,7 +71,7 @@ export default function AboutPage() {
       company: "Projets Indépendants",
       duration: "En cours",
       description:
-        "Conception, développement et déploiement d'applications web complètes, démontrant une expertise dans les technologies modernes de développement.",
+        "Conception, développement et déploiement d&apos;applications web complètes, démontrant une expertise dans les technologies modernes de développement.",
       skills: [
         "PHP",
         "POO",
@@ -88,12 +88,12 @@ export default function AboutPage() {
       icon: <Code className="w-6 h-6 text-amber-400" />,
     },
     {
-      role: "Superviseur d'équipe BPO & Graphiste",
+      role: "Superviseur d&apos;équipe BPO & Graphiste",
       company: "ABL Outsourcing",
-      duration: "Mai 2020 - Aujourd'hui",
+      duration: "Mai 2020 - Aujourd&apos;hui",
       description:
-        "Gestion d'une équipe de 15 personnes, coordination des opérations quotidiennes, et création de supports visuels pour améliorer la communication interne et externe.",
-      skills: ["Gestion d'équipe", "Communication", "Leadership", "Adobe Photoshop", "Adobe Illustrator", "Canva"],
+        "Gestion d&apos;une équipe de 15 personnes, coordination des opérations quotidiennes, et création de supports visuels pour améliorer la communication interne et externe.",
+      skills: ["Gestion d&apos;équipe", "Communication", "Leadership", "Adobe Photoshop", "Adobe Illustrator", "Canva"],
       icon: <Users className="w-6 h-6 text-amber-400" />,
     },
   ];
@@ -105,7 +105,7 @@ export default function AboutPage() {
       periode: "Mai 2023 - Février 2025",
       titre: "Spécialisation en Développement Informatique et Conception de Solutions Logicielles",
       details:
-        "Acquisition de compétences solides en algorithmique, bases de la programmation, et méthodologies de conception logicielle. Inclut également des modules de 'soft skills' pour l'intégration professionnelle.",
+        "Acquisition de compétences solides en algorithmique, bases de la programmation, et méthodologies de conception logicielle. Inclut également des modules de 'soft skills' pour l&apos;intégration professionnelle.",
       competences: ["Algorithmique", "Bases de la programmation", "Conception logicielle", "Soft skills"],
     },
     {
@@ -114,7 +114,7 @@ export default function AboutPage() {
       periode: "2024",
       titre: "Communication Interne & Externe",
       details:
-        "Formation ciblée sur l'optimisation des flux d'information et des stratégies d'échange au sein et à l'extérieur de l'organisation.",
+        "Formation ciblée sur l&apos;optimisation des flux d&apos;information et des stratégies d&apos;échange au sein et à l&apos;extérieur de l&apos;organisation.",
       competences: ["Communication Stratégique", "Rédaction Professionnelle", "Gestion des parties prenantes"],
     },
     {
@@ -123,7 +123,7 @@ export default function AboutPage() {
       periode: "2022",
       titre: "Fondamentaux du Management",
       details:
-        "Apprentissage des principes de base de la gestion d'équipe, de la planification des tâches et du suivi des performances.",
+        "Apprentissage des principes de base de la gestion d&apos;équipe, de la planification des tâches et du suivi des performances.",
       competences: ["Planification", "Suivi de performance", "Délégation", "Encadrement"],
     },
     {
@@ -133,7 +133,7 @@ export default function AboutPage() {
       titre: "Leadership & Intelligence Émotionnelle",
       details:
         "Développement des capacités de leadership et de la conscience émotionnelle pour une meilleure gestion des relations interpersonnelles et une motivation accrue des équipes.",
-      competences: ["Leadership", "Intelligence Émotionnelle", "Gestion de conflit", "Motivation d'équipe"],
+      competences: ["Leadership", "Intelligence Émotionnelle", "Gestion de conflit", "Motivation d&apos;équipe"],
     },
   ];
 
@@ -168,7 +168,7 @@ export default function AboutPage() {
     { name: "Résolution de problèmes", icon: <Star size={24} /> },
     { name: "Communication efficace", icon: <Users size={24} /> },
     { name: "Adaptabilité", icon: <Code size={24} /> },
-    { name: "Travail d'équipe", icon: <Briefcase size={24} /> },
+    { name: "Travail d&apos;équipe", icon: <Briefcase size={24} /> },
     { name: "Leadership", icon: <GraduationCap size={24} /> },
   ];
 
@@ -225,7 +225,7 @@ export default function AboutPage() {
               <GraduationCap size={32} /> Parcours & Compétences
             </h2>
             <p className="text-lg mb-4 text-center text-gray-300">
-              J&apos;ai débuté mon parcours professionnel chez Outsourcia où j&apos;ai rapidement progressé pour devenir Manager d&apos;équipe BPO et Graphiste. J'ai ensuite consolidé mon expertise en rejoignant ABL Outsourcing en tant que Superviseur d'Équipe, développant mes compétences en leadership et en gestion de projet multidisciplinaire. Aujourd'hui, je capitalise sur cette solide base managériale en y fusionnant ma passion et mes compétences en développement web Full-Stack (PHP/Symfony, React.js, Tailwind CSS) pour concevoir et créer des solutions logicielles complètes et performantes.
+              J&apos;ai débuté mon parcours professionnel chez Outsourcia où j&apos;ai rapidement progressé pour devenir Manager d&apos;équipe BPO et Graphiste. J&apos;ai ensuite consolidé mon expertise en rejoignant ABL Outsourcing en tant que Superviseur d&apos;Équipe, développant mes compétences en leadership et en gestion de projet multidisciplinaire. Aujourd&apos;hui, je capitalise sur cette solide base managériale en y fusionnant ma passion et mes compétences en développement web Full-Stack (PHP/Symfony, React.js, Tailwind CSS) pour concevoir et créer des solutions logicielles complètes et performantes.
             </p>
 
             {/* Expériences Professionnelles - SECTION DÉPLIABLE */}

@@ -51,7 +51,7 @@ export default function Footer() {
           <h3 className="text-xl font-bold text-amber-500 mb-4">Qui suis-je ?</h3>
           <p className="text-sm">
             Développeur web passionné, je transforme vos idées en solutions numériques
-            performantes et élégantes. Découvrez mes projets et n'hésitez pas à me contacter.
+            performantes et élégantes. Découvrez mes projets et n&apos;hésitez pas à me contacter.
           </p>
           <div className="flex gap-4 mt-4">
             {socialLinks.map((link) => (
