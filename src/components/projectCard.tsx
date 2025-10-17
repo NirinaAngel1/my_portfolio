@@ -9,7 +9,7 @@ interface Project {
   description: string;
   image: string;
   githubLink: string;
-  slug: string;
+  slug?: string;
 }
 
 
