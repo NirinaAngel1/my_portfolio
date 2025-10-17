@@ -2,7 +2,6 @@
 "use client";
 
 import React, { useState } from "react"; // Importez useState ici
-import Link from "next/link"; // Link non utilisé dans ce composant, peut être retiré si vous ne l'utilisez pas
 import Image from "next/image";
 import {
   Briefcase,
@@ -203,7 +202,7 @@ export default function AboutPage() {
           />
           <h2 className="text-3xl font-bold text-white mb-3">Nirina Angelin</h2>
           <p className="text-lg text-gray-300 text-center mb-4">
-            Développeur Web Full-Stack passionné, fort de plusieurs années d'expérience en management d'équipe et supervision. Mon parcours polyvalent me confère une vision stratégique et une approche rigoureuse pour concrétiser des projets innovants.
+            Développeur Web Full-Stack passionné, fort de plusieurs années d&apos;expérience en management d&apos;équipe et supervision. Mon parcours polyvalent me confère une vision stratégique et une approche rigoureuse pour concrétiser des projets innovants.
           </p>
           <motion.a
             href="/CV_Nirina_Angelin.pdf"
@@ -226,7 +225,7 @@ export default function AboutPage() {
               <GraduationCap size={32} /> Parcours & Compétences
             </h2>
             <p className="text-lg mb-4 text-center text-gray-300">
-              J'ai débuté mon parcours professionnel chez Outsourcia où j'ai rapidement progressé pour devenir Manager d'équipe BPO et Graphiste. J'ai ensuite consolidé mon expertise en rejoignant ABL Outsourcing en tant que Superviseur d'Équipe, développant mes compétences en leadership et en gestion de projet multidisciplinaire. Aujourd'hui, je capitalise sur cette solide base managériale en y fusionnant ma passion et mes compétences en développement web Full-Stack (PHP/Symfony, React.js, Tailwind CSS) pour concevoir et créer des solutions logicielles complètes et performantes.
+              J&apos;ai débuté mon parcours professionnel chez Outsourcia où j&apos;ai rapidement progressé pour devenir Manager d&apos;équipe BPO et Graphiste. J'ai ensuite consolidé mon expertise en rejoignant ABL Outsourcing en tant que Superviseur d'Équipe, développant mes compétences en leadership et en gestion de projet multidisciplinaire. Aujourd'hui, je capitalise sur cette solide base managériale en y fusionnant ma passion et mes compétences en développement web Full-Stack (PHP/Symfony, React.js, Tailwind CSS) pour concevoir et créer des solutions logicielles complètes et performantes.
             </p>
 
             {/* Expériences Professionnelles - SECTION DÉPLIABLE */}
