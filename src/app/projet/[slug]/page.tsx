@@ -23,6 +23,4 @@ export default async function ProjectPage({params}:ProjectPageProps) {
     return (
         <DetailProjectPage project={project} />
     )
-    
-        
 };
