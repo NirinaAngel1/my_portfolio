@@ -65,7 +65,7 @@ export default function HomePage(){
       variants={itemVariants}
       className="flex flex-col sm:flex-row items-center gap-4 mb-8"
       >
-        <Link href="/projects" passHref>
+        <Link href="/projet" passHref>
           <motion.button
           whileHover={{ scale: 1.05}}
         whileTap={{ scale: 0.95 }}
@@ -74,7 +74,7 @@ export default function HomePage(){
           Découvrir mes Projets
           </motion.button>
         </Link>
-         <Link href="/projects" passHref>
+         <Link href="/about" passHref>
           <motion.button
           whileHover={{ scale: 1.05}}
         whileTap={{ scale: 0.95 }}
