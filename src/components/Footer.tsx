@@ -38,7 +38,7 @@ export default function Footer() {
     { href: "/projet", label: "Mes Projets"},
   ];
 
-  const linkClasses = (href) =>
+  const linkClasses = (href?:string) =>
     `flex items-center gap-2 px-2 py-1 rounded-md transition-colors ${
       pathname === href ? "text-gray-300 font-semibold" : "hover:text-white text-gray-200"
     }`;

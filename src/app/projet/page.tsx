@@ -10,9 +10,12 @@ export default async function ProjectPage() {
   });
 
    const projects = rawProjects.map((proj) => ({
-    ...proj,
-    id: proj.id.toString(), 
-    slug: proj.slug ?? proj.title.toLowerCase().replace(/\s+/g, "-"), 
+    id: proj.id,
+    title: proj.title,
+    description: proj.description ?? "",
+    image_url: proj.image_url ?? "/placeholder.jpg",
+    github_url: proj.github_url ?? "#",
+    slug: proj.slug ?? "",
   }));
  
   return (

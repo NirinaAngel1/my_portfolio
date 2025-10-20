@@ -21,7 +21,7 @@ export default async function ProjectPage({params}:ProjectPageProps) {
     }
 
     const project = {
-            id: projectFromDB.id.toString(),
+            id: projectFromDB.id,
             title: projectFromDB.title,
             description: projectFromDB.description ?? "",
             image_url: projectFromDB.image_url ?? "/placeholder.jpg",

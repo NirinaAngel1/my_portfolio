@@ -26,7 +26,7 @@ const contentItemsVariants: Variants = {
 };
 
 type Project = {
-  id:string;
+  id:bigint;
   title:string;
   description:string;
   github_url:string;
@@ -56,6 +56,7 @@ export default function ProjectList ({projects} : Props){
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center mt-4">
           {projects.map((proj) => (
             <ProjectCard
+                id={proj.id}
                 key={proj.id}
                 title={proj.title}
                 description={proj.description}

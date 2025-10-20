@@ -5,6 +5,7 @@ import {  Github } from "lucide-react";
 
 
 interface Project {
+  id:bigint;
   title: string;
   description: string;
   image: string;
@@ -30,6 +31,7 @@ const cardVariants: Variants = {
 
 
 const ProjectCard: React.FC<Project> = ({
+  id,
   title,
   description,
   image,
