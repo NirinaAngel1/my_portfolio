@@ -68,7 +68,7 @@ const ProjectCard: React.FC<Project> = ({
         className="px-6 pt-4 flex justify-between items-center space-x-2 mb-4"
       >
         <Link
-          href={`/projects/${slug}`}
+          href={`/projet/${slug}`}
           className="flex-grow text-center bg-amber-400 hover:bg-amber-500 text-white font-bold py-2 px-4 rounded transition duration-150 ease-in-out"
         >
           Voir les détails

@@ -7,7 +7,12 @@
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "seed": "node prisma/seed.mjs"
+    "seed": "node prisma/seed-runner.cjs",
+    "postinstall": "prisma generate",
+    "prisma:seed": "npm run seed",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:reset": "prisma migrate reset",
+    "postmigrate:reset": "npm run seed"
   },
   "dependencies": {
     "@prisma/client": "^6.17.1",

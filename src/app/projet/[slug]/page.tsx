@@ -1,15 +1,28 @@
-"use client";
+import prisma from "@/lib/prisma";
+import { notFound } from "next/navigation";
+import DetailProjectPage from "@/components/DetailProjectPage";
 
-import React from 'react';
-import { motion, Variants } from "framer-motion";
-
-
-export default function ProjectDetail (){
-    return (
-        <div className='bg-gray-800 container mx-auto text-3xl font-extrabold uppercase text-amber-400'>
-            <>
-            {console.log("Page de détail du projet")}
-            </>
-        </div>
-    )
+interface ProjectPageProps {
+  params: {
+    slug: string;
+  };
 }
+
+export default async function ProjectPage({params}:ProjectPageProps) {
+   
+    const project = await prisma.project.findUnique({
+        where:{
+            slug:params.slug
+        }
+    });
+
+    if(!project){
+        return notFound();
+    }
+
+    return (
+        <DetailProjectPage project={project} />
+    )
+    
+        
+};

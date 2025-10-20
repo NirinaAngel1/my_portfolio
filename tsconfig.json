@@ -19,9 +19,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*","src/components/*"]
+      "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "prisma/seed.mjs", "lib/prisma.mjs"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "prisma/seed.ts", "lib/prisma.mjs", "src/lib/prisma.ts"],
   "exclude": ["node_modules"]
 }

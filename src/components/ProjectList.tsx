@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion, Variants } from "framer-motion";
-import ProjectCard from "@/projectCard";
+import ProjectCard from "@/components/projectCard";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0, y: 30 },

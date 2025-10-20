@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  seed = "ts-node prisma/seed.ts"
 }
 
 datasource db {
@@ -14,4 +15,5 @@ model Project {
   image_url   String?
   github_url  String?
   created_at  DateTime? @default(now()) @db.Timestamptz(6)
+  slug        String?   @unique
 }
