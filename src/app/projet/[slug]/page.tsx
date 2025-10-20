@@ -10,14 +10,23 @@ interface ProjectPageProps {
 
 export default async function ProjectPage({params}:ProjectPageProps) {
    
-    const project = await prisma.project.findUnique({
+    const projectFromDB = await prisma.project.findUnique({
         where:{
             slug:params.slug
         }
     });
 
-    if(!project){
+    if(!projectFromDB){
         return notFound();
+    }
+
+    const project = {
+            id: projectFromDB.id.toString(),
+            title: projectFromDB.title,
+            description: projectFromDB.description ?? "",
+            image_url: projectFromDB.image_url ?? "/placeholder.jpg",
+            github_url: projectFromDB.github_url ?? "#",
+            slug: projectFromDB.slug ?? "",
     }
 
     return (
