@@ -28,7 +28,7 @@ async function main() {
       {
         title: "ToDo List",
         description: "Application ToDo List complète, développée en utilisant PHP pour une gestion robuste du backend. L'interface est conçue avec Tailwind CSS (design moderne, entièrement responsive) et les interactions (ajout/suppression instantanés) sont assurées par JavaScript, offrant une expérience utilisateur fluide et réactive.",
-        image_url: "https://00akrvgbvn.ufs.sh/f/KhVh7a2ycu1lwnpilNmURgzbswGNxDaVrZy5iFeWOf9ctko1",
+        image_url: "https://00akrvgbvn.ufs.sh/f/KhVh7a2ycu1lYrk5MiurnmQKOaJqXzue4hyFLp9fHWN2EC7j",
         github_url: "https://gitlab.com/nirina_project/todolist.git",
         slug:"todo-list"
       },

@@ -40,7 +40,7 @@ export default function HomePage(){
       className="mb-8">
         <div className="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden shadow-2xl mx-auto border-2 border-amber-400">
           <Image
-          src="/Moi.jpg"
+          src="https://00akrvgbvn.ufs.sh/f/KhVh7a2ycu1lo87iLKWNdsF3TcRCGn18LKhYbuxzSHeJlpyD"
           alt="Photo de profil"
           width={192}
           height={192}

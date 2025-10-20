@@ -193,7 +193,7 @@ export default function AboutPage() {
           className="lg:w-1/3 flex flex-col items-center p-6 bg-gray-800 rounded-lg shadow-xl"
         >
           <Image
-            src="/Moi.jpg"
+            src="https://00akrvgbvn.ufs.sh/f/KhVh7a2ycu1lo87iLKWNdsF3TcRCGn18LKhYbuxzSHeJlpyD"
             alt="Photo de profil"
             width={250}
             height={250}
