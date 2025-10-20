@@ -7,7 +7,7 @@ import Link from "next/link";
 import { motion, Variants } from "framer-motion";
 
 interface Project{
-    id: bigint;
+    id: bigint | string;
     title: string;
     description: string;
     image_url: string;
