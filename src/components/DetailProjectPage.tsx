@@ -44,7 +44,7 @@ export default function DetailProjectPage({project}:Props) {
             >{project.title}</motion.h1>
             <motion.div
             variants={contentVariants}
-            className="bg-gray-800/70 p-6 sm:p-10 rounded-2xl shadow-lg max-w-5xl w-full"
+            className="bg-gray-100/70 p-6 sm:p-10 rounded-2xl shadow-lg max-w-5xl w-full"
             >
                 <div className="relative w-full h-64 sm:h-96 mb-8 rounded-lg overflow-hidden">
                     <Image
@@ -58,13 +58,13 @@ export default function DetailProjectPage({project}:Props) {
                     </div>
                     <motion.p
                     variants={contentVariants}
-                    className="text-gray-300 text-lg leading-relaxed mb-8"
+                    className="text-gray-900 text-lg leading-relaxed mb-8"
                     >{project.description}</motion.p>
 
                         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                         <Link
                             href="/projet"
-                            className="flex items-center gap-2 bg-gray-700 hover:bg-gray-600 text-white py-2 px-4 rounded-lg transition duration-200 ease-in-out"
+                            className="flex items-center gap-2 bg-gray-600 hover:bg-gray-800 text-white py-2 px-4 rounded-lg transition duration-200 ease-in-out"
                         >
                             <ArrowLeft size={20} />
                             <span>Retour aux projets</span>
@@ -74,7 +74,7 @@ export default function DetailProjectPage({project}:Props) {
                             href={project.github_url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 ease-in-out"
+                            className="flex items-center gap-2 bg-amber-400 hover:bg-amber-500 text-white font-semibold py-2 px-4 rounded-lg transition duration-200 ease-in-out"
                         >
                             <Github size={22} />
                             <span>Voir sur GitHub</span>

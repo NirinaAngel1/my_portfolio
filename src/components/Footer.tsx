@@ -19,7 +19,7 @@ export default function Footer() {
 
   const socialLinks = [
     { href: "https://twitter.com", icon: <Twitter size={20} /> },
-    { href: "https://github.com/NirinaAngel1", icon: <Linkedin size={20} /> },
+    { href: "www.linkedin.com/in/nirina-angelin-razafimandimby", icon: <Linkedin size={20} /> },
     { href: "https://github.com/NirinaAngel1", icon: <Github size={20} /> },
     { href: "https://www.facebook.com/Nirina-razafimandimby", icon: <Facebook size={20} /> },
     { href: "https://www.instagram.com/", icon: <Instagram size={20} /> },

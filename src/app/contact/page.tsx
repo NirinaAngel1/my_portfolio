@@ -23,6 +23,13 @@ const CONTACT_INFO = {
   gitlab :"https://gitlab.com/Nirina_Angel1",
 }
 
+interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
+
 const ContactItem = ({Icon, title, link, content, colorClass = "text-amber-400"}:{Icon : React.ElementType, title: string, link?: string, content: React.ReactNode, colorClass?: string}) => (
   <div className="flex items-start p-4 bg-gray-700/50 rounded-xl transition-all hover:bg-gray-700 border border-gray-700 hover:shadow-lg hover:border-amber-500/50 ">
     <Icon size={24} className={`${colorClass} mt-1 flex-shrink-0`}/>
@@ -45,7 +52,7 @@ const ContactItem = ({Icon, title, link, content, colorClass = "text-amber-400"}
 );
 
 export default function ContactPage(){
-  const [formData, setFormData]= useState({
+  const [formData, setFormData]= useState<FormData>({
     name:"",
     email:"",
     subject:"",
@@ -68,21 +75,41 @@ export default function ContactPage(){
   };
 
 // Soumission du formulaire
-
-const handleSubmit = (e:React.FormEvent<HTMLFormElement>)=>{
+const handleSubmit = async (e:React.FormEvent<HTMLFormElement>)=>{
   e.preventDefault();
   setIsSubmitting(true);
   setSubmissionStatus('idle');
   setStatusMessage("");
 
-  // Simuler une soumission de formulaire
-  setTimeout(()=>{
-    console.log('Formulaire soumis : ', formData);
+  try {
+    const response = await fetch ('/api/send-email',{
+      method:'POST',
+      headers :{
+        'Content-Type':'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok){
+      setSubmissionStatus('success');
+      setStatusMessage("Message envoyé, je vous cotnacterai bientôt !");
+      setFormData({
+        name:"",
+        email:"",
+        subject:"",
+        message:"",
+      });
+    }else{
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Erreur lors de l\'envoi du message.');
+    }
+  } catch(error){
+    console.error("erreur de soumission", error);
+    setSubmissionStatus('error');
+    setStatusMessage((error as Error).message || 'Echec lors de l\'envoi, veuillez réessayer ou utiliser les coordonnées directes.');
+  }finally{
     setIsSubmitting(false);
-    setSubmissionStatus('success');
-    setStatusMessage("Votre message a été envoyé avec succès !");
-    setFormData({name:"", email:"", subject:"", message:""});
-  },1500)
+  }
 };
 
   const containerVariants : Variants = {
@@ -103,7 +130,7 @@ const handleSubmit = (e:React.FormEvent<HTMLFormElement>)=>{
     variants={containerVariants}
     initial="hidden"
     animate="visible"
-    className="flex flex-col items-center min-h-screen bg-gray-900 text-white p-4 sm:p-8"
+    className="flex flex-col items-center min-h-screen bg-gray-900/50 text-white p-4 sm:p-8"
     >
       {/* titre et introduction */}
       <motion.div

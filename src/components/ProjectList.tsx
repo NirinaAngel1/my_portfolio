@@ -44,7 +44,7 @@ export default function ProjectList ({projects} : Props){
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="container mx-auto px-4 py-12 min-h-screen text-white"
+      className="container mx-auto px-4 py-12 min-h-screen bg-gray-900/50 text-white"
     >
       <motion.h1
         variants={contentItemsVariants}
@@ -52,7 +52,7 @@ export default function ProjectList ({projects} : Props){
       >
         Mes projets réalisés
       </motion.h1>
-      <motion.div variants={contentItemsVariants} className="bg-gray-800/60 p-6 rounded-lg">
+      <motion.div variants={contentItemsVariants} className="bg-gray-800 p-6 rounded-lg">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center mt-4">
           {projects.map((proj) => (
             <ProjectCard

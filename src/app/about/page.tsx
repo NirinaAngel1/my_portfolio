@@ -177,7 +177,7 @@ export default function AboutPage() {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="container mx-auto px-4 py-12"
+      className="container mx-auto px-4 py-12 bg-gray-900/50"
     >
       <motion.h1
         variants={itemsVariants}
