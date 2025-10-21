@@ -86,7 +86,7 @@ export default function HomePage(){
       </motion.div>
       <motion.div variants={itemVariants} className="flex gap-6">
         <a
-          href="https://github.com/votre-compte"
+          href="https://github.com/NirinaAngel1"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub"
@@ -97,7 +97,7 @@ export default function HomePage(){
           />
         </a>
         <a
-          href="https://www.linkedin.com/in/votre-compte"
+          href="www.linkedin.com/in/nirina-angelin-razafimandimby"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn"
@@ -108,7 +108,7 @@ export default function HomePage(){
           />
         </a>
         <a
-          href="https://twitter.com/votre-compte"
+          href="https://facebook.com/nirina-razafimandimby"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Twitter"

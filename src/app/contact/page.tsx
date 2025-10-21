@@ -322,8 +322,8 @@ const handleSubmit = (e:React.FormEvent<HTMLFormElement>)=>{
           
           {/* Bloc d'encouragement */}
           <div className="p-6 bg-amber-500/10 rounded-2xl border-l-4 border-amber-500 text-gray-300 shadow-md">
-            <p className="font-semibold text-white mb-2 text-lg">Votre projet m&apos;intéresse !</p>
-            <p className="text-sm">N&apos;hésitez pas à être aussi détaillé que possible dans votre message pour que je puisse vous faire une proposition pertinente.</p>
+            <p className="font-semibold text-white mb-2 text-lg">Vous avez un projet web en tête ?</p>
+            <p className="text-sm">Je serais ravi d&apos;en discuter avec vous ! Partagez un maximum de détails afin que je puisse vous proposer une solution adaptée à vos besoins.</p>
           </div>
         </motion.div>
     </div>

@@ -18,11 +18,11 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { href: "https://twitter.com/votre-compte", icon: <Twitter size={20} /> },
-    { href: "https://www.linkedin.com/in/votre-compte", icon: <Linkedin size={20} /> },
-    { href: "https://github.com/votre-compte", icon: <Github size={20} /> },
-    { href: "https://www.facebook.com/votre-page", icon: <Facebook size={20} /> },
-    { href: "https://www.instagram.com/votre-compte", icon: <Instagram size={20} /> },
+    { href: "https://twitter.com", icon: <Twitter size={20} /> },
+    { href: "https://github.com/NirinaAngel1", icon: <Linkedin size={20} /> },
+    { href: "https://github.com/NirinaAngel1", icon: <Github size={20} /> },
+    { href: "https://www.facebook.com/Nirina-razafimandimby", icon: <Facebook size={20} /> },
+    { href: "https://www.instagram.com/", icon: <Instagram size={20} /> },
   ];
 
   const legalLinks = [

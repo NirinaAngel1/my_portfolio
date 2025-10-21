@@ -55,15 +55,16 @@ export default function Header(){
         <header className="bg-gray-950 text-white shadow">
             <div className="container mx-auto flex items-center justify-between px-6 py-4">
                 {/* logo et titre */}
+                <Link href="/">
                 <Image
-                src="/logo_light.png"
+                src="https://00akrvgbvn.ufs.sh/f/KhVh7a2ycu1lfP4K2bo9DlwzWkyNqJE63GBH5MuFrQCUASh0"
                 alt="logo_portfolio"
                 width={150}
                 height={200}
                 priority
                 className="cursor-pointer"
                 />
-
+                </Link>    
                 {/* menu de navigation */}
                 {/* menu desktop */}
                 <nav className="hidden md:flex gap-8">
