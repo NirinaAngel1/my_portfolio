@@ -30,7 +30,7 @@ export async function POST(request:Request){
 
     // Construction des options de l'e-mail
     const mailOptions = {
-      from: `Portfolio Contact - ${name} <${email}>`, // L'adresse d'envoi affichée
+      from: GMAIL_USER, // L'adresse d'envoi affichée
       to: RECEIVING_EMAIL, // Votre adresse personnelle
       replyTo: email, // Répondre va directement à l'utilisateur
       subject: `[PORTFOLIO] ${subject}`,
